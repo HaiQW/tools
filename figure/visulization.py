@@ -13,7 +13,6 @@ def get_data(data_set, label_set, size_set):
     为数据样本的label"""
     if len(label_set) != len(size_set):
         return None
-
     count = 0
     dim = data_set.shape[1]
     target = np.zeros(shape=(sum(size_set), dim))
@@ -26,16 +25,23 @@ def get_data(data_set, label_set, size_set):
     return target
 
 
+def scatter_2d(x, y):
+    """2d散点图,画label propatation算法的可视化效果. x数据样本,y是数据样本的标签(label)."""
+    fig = plt.figure()
+    plt.scatter(x[:, 0], x[:, 1], c=y, edgecolor='')
+    plt.show(fig)
+    return
+
+
 def main():
     """Main 函数"""
     df = pd.read_csv('synthetic_data.txt', delimiter=' ')
     print df.describe
 
-    dataset = get_data(df.values, [0, 1], [10, 10])
+    dataset = get_data(df.values, [2, 5], [50, 1000])
     print dataset.shape
-    fig = plt.figure()
-    plt.scatter(dataset[:, 0], dataset[:, 1], edgecolor='')
-    plt.show(fig)
+    # fig = plt.figure()
+    scatter_2d(dataset[:, 0:2], dataset[:, 3])
 
 
 if __name__ == '__main__':
