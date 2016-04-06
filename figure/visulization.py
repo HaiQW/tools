@@ -43,16 +43,24 @@ def scatter_2d(data_set):
             idx_4.append(idx)
 
     # 标签传播算法做图: 2幅子图
-    fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(16, 5))
-    axes[0].scatter(rare_set[4, 0], rare_set[4, 1], c='red', s=80, marker='^', edgecolor='red', label=r'seed example')
+    fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(16, 7.5))
     axes[0].scatter(data_set[:, 0], data_set[:, 1], s=5, c='grey', edgecolor='grey', label=r'unlabeled example')
-    axes[1].scatter(rare_set[4, 0], rare_set[4, 1], c='red', s=80, marker='^', edgecolor='red')
-    axes[1].scatter(rare_set[idx_1, 0], rare_set[idx_1, 1], c='', s=40, marker='^', edgecolor='red')
-    axes[1].scatter(rare_set[idx_2, 0], rare_set[idx_2, 1], s=5, c='grey', edgecolor='grey')
-    axes[1].scatter(major_set[idx_3, 0], major_set[idx_3, 1], s=40, c='', edgecolor='blue')
+    axes[0].scatter(rare_set[4, 0], rare_set[4, 1], c='red', s=100, marker='^', edgecolor='red', label=r'seed example')
+    axes[1].scatter(rare_set[4, 0], rare_set[4, 1], c='red', s=100, marker='^', edgecolor='red')
+    axes[1].scatter(rare_set[idx_2, 0], rare_set[idx_2, 1], s=5, c='grey', edgecolor='grey', label=r'unlabeled example')
+    axes[1].scatter(rare_set[idx_1, 0], rare_set[idx_1, 1], c='', s=50, marker='^', edgecolor='red', label=r'labeled rare example')
+    axes[1].scatter(major_set[idx_3, 0], major_set[idx_3, 1], s=50, c='', edgecolor='blue', label=r'labeled major example')
     axes[1].scatter(major_set[idx_4, 0], major_set[idx_4, 1], s=5, c='grey', edgecolor='grey')
-    axes[0].legend()
     axes[0].set_xticklabels([])
+    axes[1].set_xticklabels([])
+    axes[0].set_yticklabels([])
+    axes[1].set_yticklabels([])
+    axes[0].set_xlim([-8, 8])
+    axes[0].set_ylim([-12, 9])
+    axes[1].set_xlim([-8, 8])
+    axes[1].set_ylim([-12, 9])
+    axes[1].legend(loc="lower right")
+    axes[0].legend(loc="lower right")
     return fig
 
 
@@ -72,6 +80,8 @@ def main():
 
     # 散点图1
     fig_scatter_2d = scatter_2d(data_set[:, [0, 1, 3]])
+    plt.savefig(os.path.dirname(file_path) + '/label_propagation_fig1.eps', \
+            format='eps', bbox_inches='tight', dpi=1200)
     plt.show()
 
 
