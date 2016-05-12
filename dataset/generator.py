@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 from sklearn import datasets
 # from sklearn.preprocessing import StandardScaler
 
-def gen_dataset(n_normals=100, n_moons=100, n_scurves=100, n_circles=100):
+def gen_dataset(n_normals=1000, n_moons=100, n_scurves=100, n_circles=100):
     """
     Generate synthetic data set with manifold rare category suite for RCD and
     RCE scenario.
