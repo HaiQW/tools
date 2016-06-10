@@ -64,6 +64,19 @@ def scatter_2d(data_set):
     return fig
 
 
+def fig_fscore():
+    """fscore柱状图"""
+    algorithms = ("mknn-lp", "RNN", "rco-svm", "one-class svm", "RACH")
+    x = np.arange(len(algorithms))
+    width = 0.40
+    fscores = [0.9, 0.7, 0.5, 0.4, 0.1]
+    fig = plt.bar(x ,fscores, width, edgecolor="blue", linewidth=2, color="",  align='center')
+    plt.xticks(x+width/2.0, algorithms)
+    plt.yticks(np.arange(0, 1.1, 0.2))
+    plt.xlabel('f-score')
+    return fig
+
+
 def main():
     """Main 函数"""
     file_path = os.path.join( \
@@ -79,10 +92,18 @@ def main():
         data_set = np.loadtxt(file_path)
 
     # 散点图1
-    fig_scatter_2d = scatter_2d(data_set[:, [0, 1, 3]])
-    plt.savefig(os.path.dirname(file_path) + '/label_propagation_fig1.eps', \
+    if not os.path.isfile('label_propagation_fig1.eps'):
+        fig_scatter_2d = scatter_2d(data_set[:, [0, 1, 3]])
+        plt.savefig(os.path.dirname(file_path) + '/label_propagation_fig1.eps', \
             format='eps', bbox_inches='tight', dpi=1200)
-    plt.show()
+        plt.show()
+
+    # 柱状图
+    if not os.path.isfile('label_propagation_fig2.eps'):
+        fig2 = fig_fscore()
+        plt.savefig(os.path.dirname(file_path) + '/label_propagation_fig2.eps', \
+            format='eps', bbox_inches='tight', dpi=1200)
+        plt.show()
 
 
 if __name__ == '__main__':
