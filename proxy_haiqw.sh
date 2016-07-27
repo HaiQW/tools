@@ -1,5 +1,7 @@
 #!/bin/sh
 #use  haiqw desktop proxy
+# export http_proxy="http://whq:whq@10.214.16.254:8000"
+# export https_proxy="http://whq:whq@10.214.16.254:8000"
 export http_proxy="http://10.214.16.100:8888"
 export https_proxy="http://10.214.16.100:8888"
 
