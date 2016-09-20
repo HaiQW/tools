@@ -1,7 +1,7 @@
 digraph {
   rankdir=LR;
   "e" [penwidth=3 fontsize=28 label="The mining results \n of the objective rare category " shape="Mrecord" color="red"];
-  "d" [penwidth=3 fontsize=28 label="Robustness label propagation \n (RLP)" shape="box" color="black"];
+  "d" [penwidth=3 fontsize=28 label="Label propagation via noisy labels \n (RLP)" shape="box" color="black"];
   "c" [penwidth=3 fontsize=28 label="Seed label propagation \n (SLP) " shape="box" color="black"];
   "b" [penwidth=3 fontsize=28 label="Construct the compactness based \n similarity matrix" shape="box" color="black"];
   "a" [penwidth=3 fontsize=28 label="Rare category detection \n (Select the seed)" shape="box" color="black"];
