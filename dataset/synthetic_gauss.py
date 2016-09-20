@@ -8,7 +8,7 @@ import numpy as np
 import matplotlib as mpl
 import matplotlib.patches as patches
 
-mpl.rcParams["axes.linewidth"] = 3
+mpl.rcParams["axes.linewidth"] = 2
 
 def filter_dataset():
     """选取部分数据集，用于放大画图"""
